@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/Javascript" src="src/bookapp.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    
+    <title>LibraryBookApp</title>
+</head>
+<body>
+    <div class="box">
+    <h1>Library Book App</h1>
+    
+    <form>
+        ISBN : <br>
+        <input id="isbn" type="text" > <br>
+        Title : <br>
+        <input id="book-title" type="text" ><br>
+        Author : <br>
+        <input id="author-name" type="text" ><br>
+        Publisher : <br>
+        <input id="publisher-name" type="text" ><br>
+        Publication Date: <br>
+        <input id="publication-date" type="date" ><br>
+        Number Of Pages: <br>
+        <input id="pages" type="text" ><br>
+        Availability : <br>
+        <select id="available" class="available">
+            <option value=""></option>
+            <option value="Paperback">Paperback</option>
+            <option value="eBook">eBook</option>
+            <option value="Audiobook">Audiobook</option>
+        </select><br>
+        Edition Number : <br>
+        <input id="edition" type="text" ><br> <br>
+
+        <button type="reset" onclick="doAdd()">Add</button>
+        <button type="button" onclick="doUpdate()">Update</button>
+        <button type="button" onclick="doDelete('Do you really want to...')">Delete</button>
+        <button type="button" onclick="doPrev()">Previous</button>
+        <button type="button" onclick="doNext()">Next</button>
+        <button type="button" onclick="doSearch()">Search</button>
+        <button type="button" onclick="doFavourite()">Favourites</button>
+        
+        
+        <br>
+        <p id="alert"></p>
+        <p id="inputData"></p>
+    </form>
+</div>
+
+
+
+</body>
+</html>
