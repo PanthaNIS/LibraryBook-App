@@ -58,9 +58,60 @@ function doAdd() {
         return;
     }
     //// Adding to the database
-    bookData[bookData.length] = { Isbn: id, Title: BTitle, Author: BkAuthor, Publisher: BkPublisher, PublicationDate: BkPublicationDate, Pages: pgId, Avability: BkAvailability, Edition: BkEdition };
+    bookData[bookData.length] = { Isbn: id, Title: BTitle, Author: BkAuthor, Publisher: BkPublisher, PublicationDate: BkPublicationDate, Pages: pgId, Availability: BkAvailability, Edition: BkEdition };
     document.getElementById("display").innerHTML = JSON.stringify(bookData, null, 4);
     position++; // increment the position
+    console.log(bookData);
+}
+// calling the update function to edit the last entered data.
+function doUpdate() {
+    document.getElementById("alert").innerHTML = "";
+    var isbnString;
+    isbnString = document.getElementById("isbn").value;
+    var id = parseInt(isbnString); // converting to number
+    if (isNaN(id)) {
+        document.getElementById("alert").innerHTML = "ISBN must be entered and must be a number.";
+        return;
+    }
+    var BTitle = document.getElementById("title").value;
+    if (BTitle == "") {
+        document.getElementById("alert").innerHTML = "Book title must be entered ";
+        return;
+    }
+    var BkAuthor = document.getElementById("author").value;
+    if (BkAuthor == "") {
+        document.getElementById("alert").innerHTML = "Author name must be entered ";
+        return;
+    }
+    var BkPublisher = document.getElementById("publisher").value;
+    if (BkPublisher == "") {
+        document.getElementById("alert").innerHTML = "Publisher name must be entered ";
+        return;
+    }
+    var BkPublicationDate = document.getElementById("publicationDate").value;
+    if (BkPublicationDate == "") {
+        document.getElementById("alert").innerHTML = "Publication date must be entered ";
+        return;
+    }
+    var pageString;
+    pageString = document.getElementById("page").value;
+    var pgId = parseInt(pageString); // converting to number
+    if (isNaN(pgId)) {
+        document.getElementById("alert").innerHTML = "Page must be a number ";
+        return;
+    }
+    var BkAvailability = document.getElementById("available").value;
+    if (BkAvailability == "") {
+        document.getElementById("alert").innerHTML = "Availability Must be entered ";
+        return;
+    }
+    var BkEdition = document.getElementById("edition").value;
+    if (BkEdition == "") {
+        document.getElementById("alert").innerHTML = "Edition Must be entered ";
+        return;
+    }
+    bookData[position] = { Isbn: id, Title: BTitle, Author: BkAuthor, Publisher: BkPublisher, PublicationDate: BkPublicationDate, Pages: pgId, Availability: BkAvailability, Edition: BkEdition };
+    document.getElementById("display").innerHTML = JSON.stringify(bookData, null, 4);
     console.log(bookData);
 }
 // calling the doPrev function to show the all the input value of the previous book.
@@ -76,7 +127,7 @@ function doPrev() {
     document.getElementById("author").value = bookData[position].Author;
     document.getElementById("publisher").value = bookData[position].Publisher;
     document.getElementById("publicationDate").value = bookData[position].PublicationDate;
-    document.getElementById("available").value = bookData[position].Avability;
+    document.getElementById("available").value = bookData[position].Availability;
     document.getElementById("edition").value = bookData[position].Edition;
 }
 function doNext() {
@@ -91,7 +142,7 @@ function doNext() {
     document.getElementById("author").value = bookData[position].Author;
     document.getElementById("publisher").value = bookData[position].Publisher;
     document.getElementById("publicationDate").value = bookData[position].PublicationDate;
-    document.getElementById("available").value = bookData[position].Avability;
+    document.getElementById("available").value = bookData[position].Availability;
     document.getElementById("edition").value = bookData[position].Edition;
 }
 function doDelete() {
@@ -111,9 +162,10 @@ function doDelete() {
     document.getElementById("author").value = bookData[position].Author;
     document.getElementById("publisher").value = bookData[position].Publisher;
     document.getElementById("publicationDate").value = bookData[position].PublicationDate;
-    document.getElementById("available").value = bookData[position].Avability;
+    document.getElementById("available").value = bookData[position].Availability;
     document.getElementById("edition").value = bookData[position].Edition;
 }
+// 
 function doFavourite() {
     var nis = confirm("Do you want to see fav book");
     if (nis == true) {
@@ -123,5 +175,5 @@ function doFavourite() {
         }
     }
     bookData.splice(position, 1);
-    document.getElementById("available").value = bookData[position].Avability;
+    document.getElementById("available").value = bookData[position].Availability;
 }
